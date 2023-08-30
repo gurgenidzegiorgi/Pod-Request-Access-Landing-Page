@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: "chivo";
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+body{
+  background-image: url('../src/assets/mobile/image-host.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
