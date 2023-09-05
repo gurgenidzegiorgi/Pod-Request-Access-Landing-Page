@@ -1,87 +1,6 @@
-import { useState } from "react";
-import "./App.css";
+import ContentDiv from "./Components/ContentDiv";
 
 import logo from "../src/assets/desktop/logo.svg";
-import spotifySVG from "../src/assets/desktop/spotify.svg";
-import applePodSVG from "../src/assets/desktop/apple-podcast.svg";
-import googlePodSVG from "../src/assets/desktop/google-podcasts.svg";
-import pocketCastsSVG from "../src/assets/desktop/pocket-casts.svg";
-
-const SVGlist = [
-	{ src: spotifySVG, alt: "spotify icon" },
-	{ src: applePodSVG, alt: "apple podcast icon" },
-	{ src: googlePodSVG, alt: "google podcast icon" },
-	{ src: pocketCastsSVG, alt: "pockest casts icon" },
-];
-
-function Form() {
-	const [email, setEmail] = useState("");
-	const [showError, setShowError] = useState(false);
-	const [isHovered, setIsHovered] = useState(false);
-
-	const hovered = {
-		...selectedStyles.button,
-		backgroundColor: isHovered ? "#B3FFE2" : "#54E6AF",
-	};
-
-	const validateEmail = (email) => {
-		// Regular expression pattern for email validation
-		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailPattern.test(email);
-	};
-
-	function handleSubmit(e) {
-		if (email.trim() === " " || !validateEmail(email)) {
-			e.preventDefault();
-			setShowError(true);
-		}
-	}
-
-	return (
-		<form onSubmit={(e) => handleSubmit(e)} style={selectedStyles.form}>
-			<input
-				onChange={(e) => setEmail(e.target.value)}
-				style={selectedStyles.input}
-				type="text"
-				placeholder="Email address"
-			/>
-			{showError && (
-				<p style={selectedStyles.error}>Oops! Please check your email</p>
-			)}
-			<button
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}
-				style={hovered}
-			>
-				Request Access
-			</button>
-		</form>
-	);
-}
-
-function ContentDiv() {
-	return (
-		<div style={selectedStyles.contentDiv}>
-			<h1 style={selectedStyles.title}>
-				<span style={{ ...selectedStyles.title, color: "#54E6AF" }}>
-					Publish your podcasts
-				</span>{" "}
-				everywhere.
-			</h1>
-			<p style={selectedStyles.textContent}>
-				Upload your audio to Pod with a single click. We’ll then distribute your
-				podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket Casts and
-				more!
-			</p>
-			<div style={selectedStyles.SVGdiv}>
-				{SVGlist.map((icon) => {
-					return <img key={icon.alt} src={icon.src} alt={icon.alt} />;
-				})}
-			</div>
-			<Form styles={selectedStyles} />
-		</div>
-	);
-}
 
 const styles = {
 	App: {
@@ -254,7 +173,7 @@ export default function App() {
 			<div style={selectedStyles.overlay}></div>
 			<main style={selectedStyles.App}>
 				<img style={selectedStyles.logo} src={logo} alt="logo" />
-				<ContentDiv styles={selectedStyles} />
+				<ContentDiv selectedStyles={selectedStyles} />
 			</main>
 		</>
 	);
